@@ -55,6 +55,18 @@ public:
   virtual void apply(BaseAdapterVisu *_adapter,
                      void *_mesh_void,
                      FEVV::PMapsContainer *pmaps_bag)
+
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "void )"
+              << std::endl;
+  }
+
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     void *_mesh_void,
+                     void *_mesh_void_next,
+                     FEVV::PMapsContainer *pmaps_bag)
+
   {
     std::cerr << "This function has not been overridden ! BasePlugin::apply( "
                  "void )"
@@ -64,6 +76,15 @@ public:
 #ifdef FEVV_USE_OPENMESH
   virtual void apply(BaseAdapterVisu *_adapter,
                      MeshOpenMesh *_mesh,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "MeshOpenMesh )"
+              << std::endl;
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshOpenMesh *_mesh,
+                     MeshOpenMesh *_mesh_next,
                      FEVV::PMapsContainer *pmaps_bag)
   {
     std::cerr << "This function has not been overridden ! BasePlugin::apply( "
@@ -81,9 +102,27 @@ public:
         << "This function has not been overridden ! BasePlugin::apply( MeshLCC )"
         << std::endl;
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshLCC *_mesh,
+                     MeshLCC *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "MeshLCC )"
+              << std::endl;
+  }
 
   virtual void apply(BaseAdapterVisu *_adapter,
                      MeshSurface *_mesh,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "MeshSurface )"
+              << std::endl;
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshSurface *_mesh,
+                     MeshSurface *_mesh_next,
                      FEVV::PMapsContainer *pmaps_bag)
   {
     std::cerr << "This function has not been overridden ! BasePlugin::apply( "
@@ -99,6 +138,15 @@ public:
                  "MeshPolyhedron )"
               << std::endl;
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshPolyhedron *_mesh,
+                     MeshPolyhedron *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "MeshPolyhedron )"
+              << std::endl;
+  }
 
   virtual void apply(BaseAdapterVisu *_adapter,
                      CGALPointSet *_mesh,
@@ -108,6 +156,17 @@ public:
                  "CGALPointSet )"
               << std::endl;
   }
+
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     CGALPointSet *_mesh,
+                     CGALPointSet *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "CGALPointSet )"
+              << std::endl;
+  }
+
 #endif
 
 #ifdef FEVV_USE_AIF
@@ -119,11 +178,29 @@ public:
         << "This function has not been overridden ! BasePlugin::apply( MeshAIF )"
         << std::endl;
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshAIF *_mesh,
+                     MeshAIF *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "MeshAIF )"
+              << std::endl;
+  }
 #endif
 
 #ifdef FEVV_USE_PCL
   virtual void apply(BaseAdapterVisu *_adapter,
                      PCLPointCloud *_mesh,
+                     FEVV::PMapsContainer *pmaps_bag)
+  {
+    std::cerr << "This function has not been overridden ! BasePlugin::apply( "
+                 "PCLPointCloud )"
+              << std::endl;
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     PCLPointCloud *_mesh,
+                     PCLPointCloud *_mesh_next,
                      FEVV::PMapsContainer *pmaps_bag)
   {
     std::cerr << "This function has not been overridden ! BasePlugin::apply( "

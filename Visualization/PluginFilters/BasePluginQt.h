@@ -40,10 +40,26 @@ public:
     QMessageBox::warning(
         0, "", QObject::tr("This filter is not compatible with Polyhedron_3!"));
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshPolyhedron *_mesh,
+                     MeshPolyhedron *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0, "", QObject::tr("This filter is not compatible with Polyhedron_3!"));
+  }
 
 
   virtual void apply(BaseAdapterVisu *_adapter,
                      MeshSurface *_mesh,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0, "", QObject::tr("This filter is not compatible with Surface_mesh!"));
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshSurface *_mesh,
+                     MeshSurface *_mesh_next,
                      FEVV::PMapsContainer *pmaps_bag) override
   {
     QMessageBox::warning(
@@ -58,10 +74,26 @@ public:
     QMessageBox::warning(
         0, "", QObject::tr("This filter is not compatible with LCC!"));
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshLCC *_mesh,
+                     MeshLCC *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0, "", QObject::tr("This filter is not compatible with LCC!"));
+  }
 
 
   virtual void apply(BaseAdapterVisu *_adapter,
                      CGALPointSet *_mesh,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0, "", QObject::tr("This filter is not compatible with CGALPointSet!"));
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     CGALPointSet *_mesh,
+                     CGALPointSet *_mesh_next,
                      FEVV::PMapsContainer *pmaps_bag) override
   {
     QMessageBox::warning(
@@ -78,12 +110,28 @@ public:
     QMessageBox::warning(
         0, "", QObject::tr("This filter is not compatible with OpenMesh!"));
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshOpenMesh *_mesh,
+                     MeshOpenMesh *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0, "", QObject::tr("This filter is not compatible with OpenMesh!"));
+  }
 #endif
 
 
 #ifdef FEVV_USE_AIF
   virtual void apply(BaseAdapterVisu *_adapter,
                      MeshAIF *_mesh,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0, "", QObject::tr("This filter is not compatible with AIF!"));
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     MeshAIF *_mesh,
+                     MeshAIF *_mesh_next,
                      FEVV::PMapsContainer *pmaps_bag) override
   {
     QMessageBox::warning(
@@ -100,6 +148,16 @@ public:
     QMessageBox::warning(
         0, "", QObject::tr("This filter is not compatible with PCLPointCloud!"));
   }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     PCLPointCloud *_mesh,
+                     PCLPointCloud *_mesh_next,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0,
+        "",
+        QObject::tr("This filter is not compatible with PCLPointCloud!"));
+  }
 #endif
 
 
@@ -110,6 +168,16 @@ public:
   {
     QMessageBox::warning(
         0, "", QObject::tr("To apply this filter, please first <b>open a mesh</b>!"));
+  }
+  virtual void apply(BaseAdapterVisu *_adapter,
+                     void *_mesh_void,
+                     void *_mesh_void_next,
+                     FEVV::PMapsContainer *pmaps_bag) override
+  {
+    QMessageBox::warning(
+        0,
+        "",
+        QObject::tr("To apply this filter, please first <b>open a mesh</b>!"));
   }
 
 

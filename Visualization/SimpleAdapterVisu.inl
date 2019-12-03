@@ -393,16 +393,18 @@ FEVV::SimpleAdapterVisu::apply(Plugin *myPlugin)
 
   if(viewer)
   {
-    meshes = viewer->getSelectedMeshes();
-    properties_maps = viewer->getSelected_properties_maps();
+    meshes = viewer->getMeshes();
+    properties_maps = viewer->get_properties_maps();
   }
 
   if(meshes.size() > 0)
   {
     // case where a mesh is already loaded and selected
     // apply the plugin to the selected mesh
-
-    for(unsigned i = 0; i < meshes.size(); i++)
+    std::cout << "NUMBER OF MESHES : " << std::endl;
+    std::cout << meshes.size() << std::endl;
+	//we iterate over all opened meshed, except the last one because it has no next mesh
+    for(unsigned i = 0; i < meshes.size()-1; i++)
     {
       std::cout << "Applying filter" << std::endl;
 
@@ -410,22 +412,26 @@ FEVV::SimpleAdapterVisu::apply(Plugin *myPlugin)
       if(meshes[i].second == "POLYHEDRON")
       {
         auto mesh_ptr = static_cast< FEVV::MeshPolyhedron* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::MeshPolyhedron * >(meshes[i + 1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
       if(meshes[i].second == "SURFACEMESH")
       {
         auto mesh_ptr = static_cast< FEVV::MeshSurface* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::MeshSurface * >(meshes[i+1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
       if(meshes[i].second == "LCC")
       {
         auto mesh_ptr = static_cast< FEVV::MeshLCC* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::MeshLCC * >(meshes[i + 1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
       if(meshes[i].second == "CGALPOINTSET")
       {
         auto mesh_ptr = static_cast< FEVV::CGALPointSet* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::CGALPointSet * >(meshes[i + 1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
 #endif //FEVV_USE_CGAL
 
@@ -433,7 +439,8 @@ FEVV::SimpleAdapterVisu::apply(Plugin *myPlugin)
       if(meshes[i].second == "OPENMESH")
       {
         auto mesh_ptr = static_cast< FEVV::MeshOpenMesh* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::MeshOpenMesh * >(meshes[i + 1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
 #endif //FEVV_USE_OPENMESH
 
@@ -441,7 +448,8 @@ FEVV::SimpleAdapterVisu::apply(Plugin *myPlugin)
       if(meshes[i].second == "AIF")
       {
         auto mesh_ptr = static_cast< FEVV::MeshAIF* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::MeshAIF * >(meshes[i + 1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
 #endif //FEVV_USE_AIF
 
@@ -449,7 +457,8 @@ FEVV::SimpleAdapterVisu::apply(Plugin *myPlugin)
       if(meshes[i].second == "PCLPOINTCLOUD")
       {
         auto mesh_ptr = static_cast< FEVV::PCLPointCloud* >(meshes[i].first);
-        myPlugin->apply(this, mesh_ptr, properties_maps[i]);
+        auto next_mesh_ptr = static_cast< FEVV::PCLPointCloud * >(meshes[i + 1].first);
+        myPlugin->apply(this, mesh_ptr, next_mesh_ptr, properties_maps[i]);
       }
 #endif //FEVV_USE_PCL
     }
@@ -458,7 +467,7 @@ FEVV::SimpleAdapterVisu::apply(Plugin *myPlugin)
   {
     // case where no viewer is opened or no mesh is loaded
     // apply the plugin to a null mesh
-    myPlugin->apply(this, static_cast< void * >(nullptr), nullptr);
+    myPlugin->apply(this, static_cast< void * >(nullptr), static_cast< void * >(nullptr), nullptr);
   }
 }
 

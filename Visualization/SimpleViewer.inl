@@ -1383,7 +1383,7 @@ FEVV::SimpleViewer::internal_createMesh(
   // (nb_faces==0)) // last test for 'only_pts' mode
   if((!m_redraw) || (m_redraw && m_recreateOSGobj_if_redraw)) // NEW
   {
-    const float MAGNITUDE_N = 0.08;
+    const float MAGNITUDE_N = 1;
     // std::cout << "---------> Adding vertices (for superimpose and 'only_pts'
     // mode)" << std::endl;
 
@@ -2112,7 +2112,7 @@ FEVV::SimpleViewer::internal_createMesh_pointcloud(
   /// Adding vertices - superimpose and 'only_pts' mode only
   if((!m_redraw) || (m_redraw && m_recreateOSGobj_if_redraw)) // NEW
   {
-    const float MAGNITUDE_N = 0.08;
+    const float MAGNITUDE_N = 1;
     // std::cout << "---------> Adding vertices (for superimpose and 'only_pts'
     // mode)" << std::endl;
 
